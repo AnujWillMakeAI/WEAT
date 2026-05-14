@@ -456,24 +456,40 @@ function App() {
                 </div>
               </div>
 
-              {/* City Image Gap Filler */}
-              {cityImage && (
-                <div className="glass-panel animate-fade-in" style={{ 
-                  flex: 1, 
-                  minHeight: '200px',
-                  backgroundImage: `url(${cityImage})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  borderRadius: '24px',
-                  animationDelay: '0.3s',
-                  position: 'relative',
-                  overflow: 'hidden'
-                }}>
-                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5), transparent)' }}></div>
-                  <div style={{ position: 'absolute', bottom: '1.5rem', left: '1.5rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.875rem', color: 'rgba(255,255,255,0.9)' }}>
-                    {currentLocation?.name}
+              {/* City Image — Links to Google Maps */}
+              {cityImage && currentLocation && (
+                <a 
+                  href={`https://www.google.com/maps/search/?api=1&query=${currentLocation.lat},${currentLocation.lon}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-panel animate-fade-in"
+                  style={{ 
+                    flex: 1, 
+                    minHeight: '220px',
+                    backgroundImage: `url(${cityImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    borderRadius: '24px',
+                    animationDelay: '0.3s',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    display: 'block',
+                    textDecoration: 'none',
+                    cursor: 'pointer',
+                    transition: 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.01)'}
+                  onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 40%, transparent 100%)' }}></div>
+                  <div style={{ position: 'absolute', bottom: '1.25rem', left: '1.25rem', right: '1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+                    <div>
+                      <div style={{ fontWeight: 600, fontSize: '1.125rem', color: '#FFFFFF', letterSpacing: '-0.01em' }}>{currentLocation.name}</div>
+                      <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)', marginTop: '0.15rem' }}>View on Google Maps →</div>
+                    </div>
+                    <MapPin size={18} style={{ color: 'rgba(255,255,255,0.6)' }} />
                   </div>
-                </div>
+                </a>
               )}
 
             </div>

@@ -3,19 +3,19 @@
 :root {
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   
-  /* Core UI Colors - Monochrome / Apple Aesthetic */
-  --bg-primary: #000000;
+  /* Core UI Colors */
+  --bg-primary: #0A0A0B;
   --text-primary: #FFFFFF;
   --text-secondary: rgba(235, 235, 245, 0.6);
-  --accent-color: #0A84FF; /* iOS System Blue */
+  --accent-color: #0A84FF;
   
-  /* Glassmorphism - Extreme Apple-like Blur */
+  /* Glassmorphism */
   --glass-bg: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-highlight: rgba(255, 255, 255, 0.15);
-  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-highlight: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
   
-  /* Specific tag colors - removed playful colors for minimalist grays */
+  /* Tag colors */
   --color-base: #FFFFFF;
   --color-bottoms: #FFFFFF;
   --color-outerwear: #FFFFFF;
@@ -35,31 +35,84 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background 1.5s ease-in-out;
+  transition: background 1.2s ease-in-out, color 0.8s ease;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
 }
 
-/* Dynamic Background Themes - Refined to be subtle, deep, and elegant */
+/* ========== DYNAMIC WEATHER THEMES ========== */
+
+/* Clear Sky — warm golden-blue atmosphere */
 body.theme-clear {
-  background: radial-gradient(circle at top right, #1A2A42 0%, #000000 100%);
+  --bg-primary: #0B1D3A;
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --accent-color: #FBBF24;
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(251, 191, 36, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+    linear-gradient(175deg, #1A3A5C 0%, #0B1D3A 40%, #070E1A 100%);
 }
 
+/* Cloudy — moody steel-violet atmosphere */
 body.theme-cloudy {
-  background: radial-gradient(circle at top, #1C1C1E 0%, #000000 100%);
+  --bg-primary: #1A1B2E;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --accent-color: #94A3B8;
+  background: 
+    radial-gradient(ellipse at 30% 10%, rgba(148, 163, 184, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(100, 116, 139, 0.08) 0%, transparent 50%),
+    linear-gradient(175deg, #2D2E42 0%, #1A1B2E 50%, #0F1018 100%);
 }
 
+/* Rain — deep ocean teal */
 body.theme-rain {
-  background: radial-gradient(circle at top left, #0D1B2A 0%, #000000 100%);
+  --bg-primary: #0A1628;
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --accent-color: #38BDF8;
+  background: 
+    radial-gradient(ellipse at 50% 0%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 20% 80%, rgba(6, 78, 97, 0.12) 0%, transparent 50%),
+    linear-gradient(175deg, #112240 0%, #0A1628 45%, #050D18 100%);
 }
 
+/* Storm — dramatic indigo-purple */
 body.theme-storm {
-  background: radial-gradient(circle at center, #100C1C 0%, #000000 100%);
+  --bg-primary: #110E1F;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.07);
+  --accent-color: #A78BFA;
+  background: 
+    radial-gradient(ellipse at 40% 0%, rgba(167, 139, 250, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(99, 50, 200, 0.08) 0%, transparent 50%),
+    linear-gradient(175deg, #1E1538 0%, #110E1F 50%, #08060F 100%);
 }
 
+/* Snow — cool icy blue-silver */
 body.theme-snow {
-  background: radial-gradient(circle at top, #1A1A24 0%, #000000 100%);
+  --bg-primary: #121826;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --accent-color: #E2E8F0;
+  background: 
+    radial-gradient(ellipse at 50% 0%, rgba(226, 232, 240, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 30% 70%, rgba(148, 163, 184, 0.08) 0%, transparent 50%),
+    linear-gradient(175deg, #1E2536 0%, #121826 50%, #0A0E18 100%);
+}
+
+/* Sun theme alias */
+body.theme-sun {
+  --bg-primary: #0B1D3A;
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --accent-color: #FBBF24;
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(251, 191, 36, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 50%),
+    linear-gradient(175deg, #1A3A5C 0%, #0B1D3A 40%, #070E1A 100%);
 }
 
 .app-container {
@@ -86,7 +139,7 @@ body.theme-snow {
 }
 
 .text-accent {
-  color: var(--text-primary);
+  color: var(--accent-color);
 }
 
 .text-secondary {
@@ -103,7 +156,7 @@ body.theme-snow {
   animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* Utility for smooth interactive scaling */
+/* Interactive scale-down on press (Apple-like) */
 .interactive {
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease;
 }
